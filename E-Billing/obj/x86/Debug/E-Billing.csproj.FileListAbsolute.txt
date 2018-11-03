@@ -1,0 +1,17 @@
+c:\users\logicano\documents\visual studio 2010\Projects\E-Billing\E-Billing\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\users\logicano\documents\visual studio 2010\Projects\E-Billing\E-Billing\obj\x86\Debug\E_Billing.MDIParent1.resources
+c:\users\logicano\documents\visual studio 2010\Projects\E-Billing\E-Billing\obj\x86\Debug\E_Billing.Properties.Resources.resources
+c:\users\logicano\documents\visual studio 2010\Projects\E-Billing\E-Billing\obj\x86\Debug\GenerateResource.read.1.tlog
+c:\users\logicano\documents\visual studio 2010\Projects\E-Billing\E-Billing\obj\x86\Debug\GenerateResource.write.1.tlog
+c:\users\logicano\documents\visual studio 2010\Projects\E-Billing\E-Billing\bin\Debug\E-Billing.exe
+c:\users\logicano\documents\visual studio 2010\Projects\E-Billing\E-Billing\bin\Debug\E-Billing.pdb
+c:\users\logicano\documents\visual studio 2010\Projects\E-Billing\E-Billing\obj\x86\Debug\E-Billing.exe
+c:\users\logicano\documents\visual studio 2010\Projects\E-Billing\E-Billing\obj\x86\Debug\E-Billing.pdb
+c:\users\logicano\documents\visual studio 2010\Projects\E-Billing\E-Billing\obj\x86\Debug\E_Billing.Article.resources
+c:\users\logicano\documents\visual studio 2010\Projects\E-Billing\E-Billing\obj\x86\Debug\E_Billing.Company.resources
+c:\users\logicano\documents\visual studio 2010\Projects\E-Billing\E-Billing\obj\x86\Debug\E_Billing.BillDetail.resources
+c:\users\logicano\documents\visual studio 2010\Projects\E-Billing\E-Billing\obj\x86\Debug\E_Billing.AboutBox1.resources
+c:\users\logicano\documents\visual studio 2010\Projects\E-Billing\E-Billing\obj\x86\Debug\E_Billing.Class.resources
+c:\users\logicano\documents\visual studio 2010\Projects\E-Billing\E-Billing\obj\x86\Debug\E_Billing.Login.resources
+c:\users\logicano\documents\visual studio 2010\Projects\E-Billing\E-Billing\obj\x86\Debug\E_Billing.Semester.resources
+c:\users\logicano\documents\visual studio 2010\Projects\E-Billing\E-Billing\obj\x86\Debug\E_Billing.Subject.resources
