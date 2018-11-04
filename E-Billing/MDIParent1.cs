@@ -116,6 +116,18 @@ namespace E_Billing
         {
             AboutBox1 aboutbox = new AboutBox1();
             aboutbox.Show();
+        }
+
+        private void gSTToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GST gst = new GST();
+            gst.Show();
+        }
+
+        private void billCalculationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BillCalculation billcac = new BillCalculation();
+            billcac.Show();
         }            
     }
 }

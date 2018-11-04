@@ -7,21 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.OleDb;
-using System.Configuration;
 
 namespace E_Billing
 {
-    public partial class Article : Form
+    public partial class GST : Form
     {
         OleDbConnection con = new OleDbConnection();
-        public Article()
+        public GST()
         {
             InitializeComponent();
             con.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + System.Environment.CurrentDirectory + "\\ebilling.accdb";
             updateGridView();
         }
 
-        private void txtArticlePrice_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtGST_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (((e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 8 && e.KeyChar != 46))
             {
@@ -37,19 +36,12 @@ namespace E_Billing
             }
         }
 
-        private void btnReset_Click(object sender, EventArgs e)
+        private void GST_Load(object sender, EventArgs e)
         {
-            txtArticleName.Text = "";
-            txtArticlePrice.Text = "";
-            chkIsActive.Checked = true;
+            
         }
 
-        private void Article_Load(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'ebillingDataSet.tblArticle' table. You can move, or remove it, as needed.            
-        }
-
-        private void btnAddArticle_Click(object sender, EventArgs e)
+        private void btnAddGST_Click(object sender, EventArgs e)
         {
             OleDbTransaction trans = null;
             try
@@ -59,15 +51,12 @@ namespace E_Billing
                 OleDbCommand cmd = new OleDbCommand();
                 cmd.Transaction = trans;
                 cmd.Connection = con;
-                cmd.CommandText = "insert into tblArticle (ArticleName,ArticleRate,isActive) values(@articlename,@articlerate,@isActive)";
-                cmd.Parameters.AddWithValue("@articlename", txtArticleName.Text);
-                cmd.Parameters.AddWithValue("@articlerate",Decimal.Parse(txtArticlePrice.Text));
-                cmd.Parameters.AddWithValue("@isActive", chkIsActive.CheckState);
-                
+                cmd.CommandText = "insert into tblGST (GSTRate) values(@gstrate)";
+                cmd.Parameters.AddWithValue("@gstrate", Decimal.Parse(txtGSTRate.Text));
                 int a = cmd.ExecuteNonQuery();
                 if (a > 0)
                 {
-                    MessageBox.Show("Article Saved..!!");
+                    MessageBox.Show("GST Saved..!!");
                 }
                 trans.Commit();
                 updateGridView();
@@ -78,22 +67,21 @@ namespace E_Billing
                 trans.Rollback();
             }
             finally
-            {                
+            {
                 con.Close();
-            }            
+            }
         }
-
         private void updateGridView()
         {
-            if(con.State==ConnectionState.Closed) con.Open();            
+            if (con.State == ConnectionState.Closed) con.Open();
             DataTable dt = new DataTable();
-            OleDbCommand cmd = new OleDbCommand("Select Id,ArticleName,ArticleRate,EntryDate,isActive from tblArticle order by EntryDate DESC", con);
+            OleDbCommand cmd = new OleDbCommand("Select Id,GSTRate,EntryDate from tblGST order by EntryDate DESC", con);
             OleDbDataReader dr = cmd.ExecuteReader();
             dt.Load(dr);
-
             dt.Columns.RemoveAt(0);
-            grvArticle.DataSource = dt;
+            grvGST.DataSource = dt;
             con.Close();
-        }             
+        }  
+               
     }
 }

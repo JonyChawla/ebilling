@@ -31,10 +31,10 @@
             this.components = new System.ComponentModel.Container();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.masterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.companyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.articleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.billDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gSTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.billCalculationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutUsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
@@ -60,39 +60,40 @@
             // masterToolStripMenuItem
             // 
             this.masterToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.companyToolStripMenuItem,
             this.articleToolStripMenuItem,
-            this.billDetailsToolStripMenuItem});
+            this.gSTToolStripMenuItem});
             this.masterToolStripMenuItem.Name = "masterToolStripMenuItem";
             this.masterToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.masterToolStripMenuItem.Text = "&Master";
             // 
-            // companyToolStripMenuItem
-            // 
-            this.companyToolStripMenuItem.Name = "companyToolStripMenuItem";
-            this.companyToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
-            this.companyToolStripMenuItem.Text = "Company";
-            this.companyToolStripMenuItem.Click += new System.EventHandler(this.companyToolStripMenuItem_Click);
-            // 
             // articleToolStripMenuItem
             // 
             this.articleToolStripMenuItem.Name = "articleToolStripMenuItem";
-            this.articleToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.articleToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.articleToolStripMenuItem.Text = "Article";
             this.articleToolStripMenuItem.Click += new System.EventHandler(this.articleToolStripMenuItem_Click);
             // 
-            // billDetailsToolStripMenuItem
+            // gSTToolStripMenuItem
             // 
-            this.billDetailsToolStripMenuItem.Name = "billDetailsToolStripMenuItem";
-            this.billDetailsToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
-            this.billDetailsToolStripMenuItem.Text = "Bill Details";
-            this.billDetailsToolStripMenuItem.Click += new System.EventHandler(this.billDetailsToolStripMenuItem_Click);
+            this.gSTToolStripMenuItem.Name = "gSTToolStripMenuItem";
+            this.gSTToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.gSTToolStripMenuItem.Text = "GST";
+            this.gSTToolStripMenuItem.Click += new System.EventHandler(this.gSTToolStripMenuItem_Click);
             // 
             // transactionToolStripMenuItem
             // 
+            this.transactionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.billCalculationToolStripMenuItem});
             this.transactionToolStripMenuItem.Name = "transactionToolStripMenuItem";
             this.transactionToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
             this.transactionToolStripMenuItem.Text = "&Transaction";
+            // 
+            // billCalculationToolStripMenuItem
+            // 
+            this.billCalculationToolStripMenuItem.Name = "billCalculationToolStripMenuItem";
+            this.billCalculationToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.billCalculationToolStripMenuItem.Text = "BillCalculation";
+            this.billCalculationToolStripMenuItem.Click += new System.EventHandler(this.billCalculationToolStripMenuItem_Click);
             // 
             // reportToolStripMenuItem
             // 
@@ -130,7 +131,7 @@
             this.ClientSize = new System.Drawing.Size(632, 453);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MDIParent1";
@@ -153,11 +154,11 @@
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.ToolStripMenuItem masterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem articleToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem billDetailsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem transactionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutUsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem companyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gSTToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem billCalculationToolStripMenuItem;
     }
 }
 
