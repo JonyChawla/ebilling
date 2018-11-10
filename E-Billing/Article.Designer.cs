@@ -30,15 +30,20 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtFinancialYear = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.chkIsActive = new System.Windows.Forms.CheckBox();
-            this.btnReset = new System.Windows.Forms.Button();
-            this.txtArticlePrice = new System.Windows.Forms.TextBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.txtPGPrice = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtUGPrice = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnAddArticle = new System.Windows.Forms.Button();
             this.txtArticleName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tblArticleBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.button2 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.grvArticle = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
@@ -49,10 +54,15 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.txtFinancialYear);
+            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.chkIsActive);
-            this.groupBox1.Controls.Add(this.btnReset);
-            this.groupBox1.Controls.Add(this.txtArticlePrice);
+            this.groupBox1.Controls.Add(this.btnSearch);
+            this.groupBox1.Controls.Add(this.btnDelete);
+            this.groupBox1.Controls.Add(this.btnUpdate);
+            this.groupBox1.Controls.Add(this.txtPGPrice);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.txtUGPrice);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.btnAddArticle);
             this.groupBox1.Controls.Add(this.txtArticleName);
@@ -60,58 +70,115 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(398, 179);
+            this.groupBox1.Size = new System.Drawing.Size(398, 262);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Add Article";
+            this.groupBox1.Text = "Particular";
+            // 
+            // txtFinancialYear
+            // 
+            this.txtFinancialYear.Location = new System.Drawing.Point(120, 78);
+            this.txtFinancialYear.Name = "txtFinancialYear";
+            this.txtFinancialYear.Size = new System.Drawing.Size(163, 20);
+            this.txtFinancialYear.TabIndex = 18;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.MediumBlue;
+            this.label4.Location = new System.Drawing.Point(20, 77);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(88, 13);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Financial Year";
             // 
             // chkIsActive
             // 
             this.chkIsActive.AutoSize = true;
             this.chkIsActive.Checked = true;
             this.chkIsActive.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkIsActive.ForeColor = System.Drawing.Color.MediumBlue;
-            this.chkIsActive.Location = new System.Drawing.Point(282, 76);
+            this.chkIsActive.Location = new System.Drawing.Point(123, 162);
             this.chkIsActive.Name = "chkIsActive";
-            this.chkIsActive.Size = new System.Drawing.Size(62, 17);
-            this.chkIsActive.TabIndex = 9;
-            this.chkIsActive.Text = "Active";
+            this.chkIsActive.Size = new System.Drawing.Size(71, 17);
+            this.chkIsActive.TabIndex = 15;
+            this.chkIsActive.Text = "isActive";
             this.chkIsActive.UseVisualStyleBackColor = true;
             // 
-            // btnReset
+            // btnSearch
             // 
-            this.btnReset.Location = new System.Drawing.Point(120, 117);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(85, 39);
-            this.btnReset.TabIndex = 8;
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            this.btnSearch.Location = new System.Drawing.Point(280, 202);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(72, 31);
+            this.btnSearch.TabIndex = 14;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
             // 
-            // txtArticlePrice
+            // btnDelete
             // 
-            this.txtArticlePrice.Location = new System.Drawing.Point(93, 73);
-            this.txtArticlePrice.Name = "txtArticlePrice";
-            this.txtArticlePrice.Size = new System.Drawing.Size(163, 20);
-            this.txtArticlePrice.TabIndex = 7;
-            this.txtArticlePrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtArticlePrice_KeyPress);
+            this.btnDelete.Location = new System.Drawing.Point(202, 202);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(72, 31);
+            this.btnDelete.TabIndex = 13;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(124, 202);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(72, 31);
+            this.btnUpdate.TabIndex = 12;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // txtPGPrice
+            // 
+            this.txtPGPrice.Location = new System.Drawing.Point(120, 130);
+            this.txtPGPrice.Name = "txtPGPrice";
+            this.txtPGPrice.Size = new System.Drawing.Size(163, 20);
+            this.txtPGPrice.TabIndex = 11;
+            this.txtPGPrice.Text = "0";
+            this.txtPGPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPGPrice_KeyPress);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.MediumBlue;
+            this.label3.Location = new System.Drawing.Point(43, 133);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(57, 13);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "PG Price";
+            // 
+            // txtUGPrice
+            // 
+            this.txtUGPrice.Location = new System.Drawing.Point(120, 104);
+            this.txtUGPrice.Name = "txtUGPrice";
+            this.txtUGPrice.Size = new System.Drawing.Size(163, 20);
+            this.txtUGPrice.TabIndex = 7;
+            this.txtUGPrice.Text = "0";
+            this.txtUGPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUGPrice_KeyPress);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.MediumBlue;
-            this.label2.Location = new System.Drawing.Point(16, 76);
+            this.label2.Location = new System.Drawing.Point(43, 107);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 13);
+            this.label2.Size = new System.Drawing.Size(58, 13);
             this.label2.TabIndex = 6;
-            this.label2.Text = "Article Price";
+            this.label2.Text = "UG Price";
             // 
             // btnAddArticle
             // 
-            this.btnAddArticle.Location = new System.Drawing.Point(19, 117);
+            this.btnAddArticle.Location = new System.Drawing.Point(47, 202);
             this.btnAddArticle.Name = "btnAddArticle";
-            this.btnAddArticle.Size = new System.Drawing.Size(95, 39);
+            this.btnAddArticle.Size = new System.Drawing.Size(72, 31);
             this.btnAddArticle.TabIndex = 5;
             this.btnAddArticle.Text = "Save";
             this.btnAddArticle.UseVisualStyleBackColor = true;
@@ -119,10 +186,10 @@
             // 
             // txtArticleName
             // 
-            this.txtArticleName.Location = new System.Drawing.Point(93, 30);
+            this.txtArticleName.Location = new System.Drawing.Point(120, 30);
             this.txtArticleName.Multiline = true;
             this.txtArticleName.Name = "txtArticleName";
-            this.txtArticleName.Size = new System.Drawing.Size(288, 37);
+            this.txtArticleName.Size = new System.Drawing.Size(270, 37);
             this.txtArticleName.TabIndex = 4;
             // 
             // label1
@@ -132,22 +199,13 @@
             this.label1.ForeColor = System.Drawing.Color.MediumBlue;
             this.label1.Location = new System.Drawing.Point(15, 41);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 13);
+            this.label1.Size = new System.Drawing.Size(97, 13);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Article Name";
+            this.label1.Text = "Particular Name";
             // 
             // tblArticleBindingSource
             // 
             this.tblArticleBindingSource.DataMember = "tblArticle";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(282, 117);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(95, 39);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "Update";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -158,7 +216,7 @@
             this.groupBox2.Size = new System.Drawing.Size(576, 426);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "All Articles";
+            this.groupBox2.Text = "All Particulars";
             // 
             // grvArticle
             // 
@@ -175,7 +233,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1003, 470);
+            this.ClientSize = new System.Drawing.Size(1003, 448);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -195,16 +253,21 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnReset;
-        private System.Windows.Forms.TextBox txtArticlePrice;
+        private System.Windows.Forms.TextBox txtUGPrice;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnAddArticle;
         private System.Windows.Forms.TextBox txtArticleName;
-        private System.Windows.Forms.Label label1;        
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.BindingSource tblArticleBindingSource;
-        private System.Windows.Forms.CheckBox chkIsActive;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridView grvArticle;                
+        private System.Windows.Forms.DataGridView grvArticle;
+        private System.Windows.Forms.TextBox txtPGPrice;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.CheckBox chkIsActive;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtFinancialYear;                
     }
 }

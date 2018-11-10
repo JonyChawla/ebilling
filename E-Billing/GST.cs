@@ -41,8 +41,23 @@ namespace E_Billing
             
         }
 
+        private bool validateAddGST()
+        {
+            bool returnvalue = true;
+            if (txtGSTRate.Text.Trim() == "")
+            {
+                MessageBox.Show("GST Rate is empty..!!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                returnvalue = false;
+            }            
+            return returnvalue;
+        }
+
         private void btnAddGST_Click(object sender, EventArgs e)
         {
+            if (validateAddGST() == false)
+            {
+                return;
+            }
             OleDbTransaction trans = null;
             try
             {

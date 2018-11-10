@@ -56,6 +56,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grvArticleWiseBill)).BeginInit();
             this.panel2.SuspendLayout();
@@ -90,7 +91,6 @@
             // grvArticleWiseBill
             // 
             this.grvArticleWiseBill.AllowUserToAddRows = false;
-            this.grvArticleWiseBill.AllowUserToDeleteRows = false;
             this.grvArticleWiseBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grvArticleWiseBill.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ArticleID,
@@ -181,6 +181,7 @@
             // 
             // txtQty
             // 
+            this.txtQty.Enabled = false;
             this.txtQty.Location = new System.Drawing.Point(259, 113);
             this.txtQty.Name = "txtQty";
             this.txtQty.Size = new System.Drawing.Size(109, 20);
@@ -206,6 +207,7 @@
             this.txtRate.Name = "txtRate";
             this.txtRate.Size = new System.Drawing.Size(127, 20);
             this.txtRate.TabIndex = 32;
+            this.txtRate.Text = "0";
             // 
             // lblArticles
             // 
@@ -243,6 +245,7 @@
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.Size = new System.Drawing.Size(265, 20);
             this.txtAmount.TabIndex = 38;
+            this.txtAmount.Text = "0";
             // 
             // panel2
             // 
@@ -277,6 +280,7 @@
             this.txtGrandTotal.Name = "txtGrandTotal";
             this.txtGrandTotal.Size = new System.Drawing.Size(224, 20);
             this.txtGrandTotal.TabIndex = 40;
+            this.txtGrandTotal.Text = "0";
             // 
             // txtTotalAmount
             // 
@@ -285,6 +289,7 @@
             this.txtTotalAmount.Name = "txtTotalAmount";
             this.txtTotalAmount.Size = new System.Drawing.Size(224, 20);
             this.txtTotalAmount.TabIndex = 39;
+            this.txtTotalAmount.Text = "0";
             // 
             // txtGSTAmount
             // 
@@ -293,6 +298,7 @@
             this.txtGSTAmount.Name = "txtGSTAmount";
             this.txtGSTAmount.Size = new System.Drawing.Size(155, 20);
             this.txtGSTAmount.TabIndex = 33;
+            this.txtGSTAmount.Text = "0";
             // 
             // label7
             // 
@@ -324,11 +330,24 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "Total Amount";
             // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.DarkRed;
+            this.button2.Location = new System.Drawing.Point(867, 15);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(110, 30);
+            this.button2.TabIndex = 42;
+            this.button2.Text = "Reset All";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // BillCalculation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(989, 474);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.label4);
@@ -387,5 +406,6 @@
         private System.Windows.Forms.TextBox txtTotalAmount;
         private System.Windows.Forms.TextBox txtGSTAmount;
         private System.Windows.Forms.Label lblGSTrate;
+        private System.Windows.Forms.Button button2;
     }
 }

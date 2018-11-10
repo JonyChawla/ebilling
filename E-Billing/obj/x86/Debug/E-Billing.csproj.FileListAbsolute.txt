@@ -15,6 +15,6 @@ c:\users\logicano\documents\visual studio 2010\Projects\E-Billing\E-Billing\obj\
 C:\Users\logicano\documents\visual studio 2010\Projects\E-Billing\E-Billing\obj\x86\Debug\E_Billing.BillCalculation.resources
 C:\Users\logicano\documents\visual studio 2010\Projects\E-Billing\E-Billing\obj\x86\Debug\E_Billing.GST.resources
 C:\Users\logicano\documents\visual studio 2010\Projects\E-Billing\E-Billing\obj\x86\Debug\E-Billing.csproj.GenerateResource.Cache
-C:\Users\logicano\documents\visual studio 2010\Projects\E-Billing\E-Billing\bin\Debug\ebilling.accdb
 C:\Users\logicano\documents\visual studio 2010\Projects\E-Billing\E-Billing\bin\Debug\E-Billing.exe.config
 C:\Users\logicano\documents\visual studio 2010\Projects\E-Billing\E-Billing\obj\x86\Debug\E-Billing.csprojResolveAssemblyReference.cache
+C:\Users\logicano\documents\visual studio 2010\Projects\E-Billing\E-Billing\obj\x86\Debug\E_Billing.BillCalculationTemplate.resources

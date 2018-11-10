@@ -33,9 +33,12 @@ namespace E_Billing
         }
         private void fillArticles()
         {
+
+            String articlesalreadyadded=getArticleAlreadyAddedInStringFormat();
+
             DataRow dr;            
-            con.Open();
-            OleDbCommand cmd = new OleDbCommand("select * from tblArticle where isActive=true", con);
+            if(con.State == ConnectionState.Closed) con.Open();
+            OleDbCommand cmd = new OleDbCommand("select * from tblArticle where isActive=true and (ID NOT IN (" + articlesalreadyadded + "))", con);
             OleDbDataAdapter sda = new OleDbDataAdapter(cmd);
             DataTable dt = new DataTable();
             sda.Fill(dt);
@@ -51,16 +54,39 @@ namespace E_Billing
             con.Close();  
         }
 
+        private string getArticleAlreadyAddedInStringFormat()
+        {
+            if (grvArticleWiseBill.Rows.Count==0)
+            {
+                return "0";
+            }
+
+            String articlesalreadyadded = "";
+            for (int rows = 0; rows < grvArticleWiseBill.Rows.Count; rows++)
+            {
+                articlesalreadyadded=articlesalreadyadded+ grvArticleWiseBill.Rows[rows].Cells[0].Value.ToString();
+                if (rows != (grvArticleWiseBill.Rows.Count - 1))
+                {
+                    articlesalreadyadded = articlesalreadyadded + ",";
+                }
+            }
+            return articlesalreadyadded;
+
+        }
+
         private void cmbArticles_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!(cmbArticles.SelectedIndex == 0) && (txtQty.Text!=""))
             {
+                txtQty.Enabled = true;
                 getRateofArticle();
                 calculateAmount();
             }
             else
             {
-                txtRate.Text = "";
+                txtRate.Text = "0";
+                txtQty.Text= "0";
+                txtQty.Enabled = false;
             }
         }
 
@@ -72,15 +98,13 @@ namespace E_Billing
 
         private void getRateofArticle()
         {
-            con.Open();
+            if (con.State==ConnectionState.Closed)  con.Open();
             OleDbCommand cmd = new OleDbCommand("select ArticleRate from tblArticle where ID=" + cmbArticles.SelectedValue, con);
             OleDbDataReader dr = cmd.ExecuteReader();
-
             if (dr.Read())
             {
                 txtRate.Text = dr.GetValue(0).ToString();
-            }           
-
+            }
             con.Close();
         }
 
@@ -113,11 +137,13 @@ namespace E_Billing
         private void grvArticleWiseBill_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             updateNetAmount();
+            fillArticles();
         }
 
         private void grvArticleWiseBill_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
-
+            updateNetAmount();
+            fillArticles();
         }
 
         private void updateNetAmount()
@@ -218,8 +244,8 @@ namespace E_Billing
                         OleDbCommand cmdForBillDetail = new OleDbCommand();
                         cmdForBillDetail.Transaction = trans;
                         cmdForBillDetail.Connection = con;
-                        cmdForBillDetail.CommandText = "insert into tblBillCalculationDetail (BillNumber,ArticleId,ArticleRate,Qty,Amount) values(@BillNumber,@ArticleId,@ArticleRate,@Qty,@Amount)";
-                        cmdForBillDetail.Parameters.AddWithValue("@BillNumber", txtBillNo.Text);
+                        cmdForBillDetail.CommandText = "insert into tblBillCalculationDetail (BillNo,ArticleId,ArticleRate,Qty,Amount) values(@BillNo,@ArticleId,@ArticleRate,@Qty,@Amount)";
+                        cmdForBillDetail.Parameters.AddWithValue("@BillNo", txtBillNo.Text);
                         cmdForBillDetail.Parameters.AddWithValue("@ArticleId", grvArticleWiseBill.Rows[rows].Cells[0].Value.ToString());
                         cmdForBillDetail.Parameters.AddWithValue("@ArticleRate", Decimal.Parse(grvArticleWiseBill.Rows[rows].Cells[2].Value.ToString()));
                         cmdForBillDetail.Parameters.AddWithValue("@Qty", grvArticleWiseBill.Rows[rows].Cells[3].Value);
@@ -229,6 +255,7 @@ namespace E_Billing
                 }
                 trans.Commit();
                 MessageBox.Show("Bill Calculation Saved Successfully..!!");
+                resetAll();
             }
             catch (Exception ex)
             {
@@ -256,8 +283,76 @@ namespace E_Billing
             return returnvalue;
         }
         private void resetAll()
-        { 
-                    
+        {
+            txtBillNo.Text = "";
+            grvArticleWiseBill.Rows.Clear();
+            txtRate.Text = "0";
+            txtQty.Text = "0";
+            txtAmount.Text = "0";
+            txtGSTAmount.Text = "0";
+            txtGrandTotal.Text = "0";
+            txtTotalAmount.Text = "0";
+            lblGSTrate.Text = "";
+            fillArticles();    
         }
+
+        private void btnSearchBillCalculation_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            resetAll();
+        }
+
+        //private void btnSearch_Click(object sender, EventArgs e)
+        //{
+        //    if (txtBillNo.Text.Trim() == "")
+        //    {
+        //        MessageBox.Show("Please enter bill number..!!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        return;
+        //    }
+        //    if (!getBillCalculation())
+        //    {
+        //        MessageBox.Show("No record found with this Bill Number : "+txtBillNo.Text.Trim(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        return;
+        //    }
+        //    getBillCalculationDetail();
+        //}
+
+        //private void getBillCalculationDetail()
+        //{            
+        //    if (con.State == ConnectionState.Closed) con.Open();
+        //    DataTable dt = new DataTable();
+        //    OleDbCommand cmd = new OleDbCommand("Select * from tblBillCalculationDetail", con);
+        //    OleDbDataReader dr = cmd.ExecuteReader();
+        //    dt.Load(dr);
+
+        //    dt.Columns.RemoveAt(0);
+        //    grvArticleWiseBill.DataSource = dt;
+        //    con.Close();            
+        //}
+
+        //private bool getBillCalculation()
+        //{
+        //    if (con.State == ConnectionState.Closed) con.Open();
+        //    OleDbCommand cmd = new OleDbCommand("select * from tblBillCalculation where billno='" + txtBillNo.Text.Trim()+"'", con);
+        //    OleDbDataReader dr = cmd.ExecuteReader();
+        //    if (dr.Read())
+        //    {
+        //        txtTotalAmount.Text = dr.GetValue(2).ToString();
+        //        lblGSTrate.Text = "@ " + dr.GetValue(3).ToString() + " %";
+        //        txtGSTAmount.Text = dr.GetValue(4).ToString();
+        //        txtGrandTotal.Text = dr.GetValue(5).ToString();
+        //        con.Close();
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        con.Close();
+        //        return false;
+        //    }            
+        //}                
     }
 }

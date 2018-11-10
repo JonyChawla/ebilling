@@ -126,8 +126,14 @@ namespace E_Billing
 
         private void billCalculationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            BillCalculation billcac = new BillCalculation();
+            BillCalculationTemplate billcac = new BillCalculationTemplate();
             billcac.Show();
+        }
+
+        private void classToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Class class1=new Class();
+            class1.Show();
         }            
     }
 }
