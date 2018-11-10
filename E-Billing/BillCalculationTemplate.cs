@@ -140,24 +140,86 @@ namespace E_Billing
         private decimal fillGridwithitems(DataTable dt)
         {
             decimal totalamount = 0;
-
             grvArticleWiseBill.Rows.Clear();
+
             foreach (DataRow row in dt.Rows)
             {
                 decimal rate=decimal.Parse(row["Rate"].ToString());
                 decimal amount = 0;
-                if (row["Particular"].ToString()=="Printed Pages")
+                string particularname = row["Particular"].ToString();
+                if (particularname == "Printed Pages")
                 {
                     amount = rate * decimal.Parse(txtprintedpages.Text);
                 }
-                else if (row["Particular"].ToString() == "Lamination")
+                else if (particularname == "Lamination")
                 {
                     amount = rate * decimal.Parse(txtNoofcopies.Text);
                 }
-                grvArticleWiseBill.Rows.Add(row["Particular"].ToString(), row["Rate"].ToString(), amount);
+                else if (particularname == "Printing on Title Cover per 100")
+                {
+                    amount = getAmountForPrintingOnTitleCover(rate, amount);
+                }
+                else if (particularname == "Title Pasting per 100")
+                {
+                    amount = getAmountForPrintingOnTitleCover(rate, amount);
+                }
+                else if (particularname == "Consumption of Paper")
+                {
+                    amount = getAmountForConsumptionofPaper(amount);
+                }
+                else if (particularname == "Binding & Stiching")
+                {
+                    amount = getAmountForBindingAndStiching(rate, amount);
+                }
+
+                grvArticleWiseBill.Rows.Add(particularname, rate, amount);
                 totalamount = totalamount + amount;
             }
             return totalamount;
+        }
+
+        private decimal getAmountForConsumptionofPaper(decimal amount)
+        {
+            int totalnoofcopies = int.Parse(txtNoofcopies.Text);
+            int totalpages = int.Parse(txttotalpages.Text);
+            string typeofclass = txtClassType.Text;
+            decimal fixedvalue = 16M;
+            decimal fixedvalue1 = 1.5M;
+            decimal fixedvalue2 = 3.2M;
+            decimal fixedvalue3 = 4.2M;
+            decimal figure1 = ((decimal.Parse(totalnoofcopies.ToString()) * decimal.Parse(totalpages.ToString())) / fixedvalue);                        
+            decimal figure2= (fixedvalue1 * Math.Round(figure1));
+            decimal figure3= (figure2/100);
+            decimal figure4 = figure1 + figure3;
+            amount = figure4 * ((typeofclass == "UG") ? fixedvalue2 : fixedvalue3);
+            return Math.Round(amount,2);
+        }
+
+        private decimal getAmountForBindingAndStiching(decimal rate, decimal amount)
+        {
+            int totalpages = int.Parse(txttotalpages.Text);
+            int totalnoofcopies = int.Parse(txtNoofcopies.Text);
+            int noofcopiesper100 = getNumberofcopiesper100(totalnoofcopies);
+            amount = rate * noofcopiesper100 * totalpages / 8;
+            return amount;
+        }
+
+        private decimal getAmountForPrintingOnTitleCover(decimal rate, decimal amount)
+        {
+            int noofcopies = int.Parse(txtNoofcopies.Text);
+            int noofcopiesper100 = getNumberofcopiesper100(noofcopies);
+            amount = rate * noofcopiesper100;
+            return amount;
+        }
+
+        private int getNumberofcopiesper100(int noofcopies)
+        {
+            int noofcopiesper100 = (noofcopies / 100);
+            if ((int.Parse(txtNoofcopies.Text) % 100) > 0)
+            {
+                noofcopiesper100 = noofcopiesper100 + 1;
+            }
+            return noofcopiesper100;
         }
 
         private DataTable getAllActiveArticlesByFinancialYear()
