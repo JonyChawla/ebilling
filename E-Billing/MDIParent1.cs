@@ -134,6 +134,12 @@ namespace E_Billing
         {
             Class class1=new Class();
             class1.Show();
+        }
+
+        private void firmToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Firm firm = new Firm();
+            firm.Show();
         }            
     }
 }

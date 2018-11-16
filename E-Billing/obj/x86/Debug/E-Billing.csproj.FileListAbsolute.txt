@@ -18,3 +18,4 @@ C:\Users\logicano\documents\visual studio 2010\Projects\E-Billing\E-Billing\obj\
 C:\Users\logicano\documents\visual studio 2010\Projects\E-Billing\E-Billing\bin\Debug\E-Billing.exe.config
 C:\Users\logicano\documents\visual studio 2010\Projects\E-Billing\E-Billing\obj\x86\Debug\E-Billing.csprojResolveAssemblyReference.cache
 C:\Users\logicano\documents\visual studio 2010\Projects\E-Billing\E-Billing\obj\x86\Debug\E_Billing.BillCalculationTemplate.resources
+C:\Users\logicano\Documents\Visual Studio 2010\Projects\E-Billing\E-Billing\obj\x86\Debug\E_Billing.Firm.resources

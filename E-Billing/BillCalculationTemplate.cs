@@ -27,6 +27,7 @@ namespace E_Billing
         private void BillCalculationTemplate_Load(object sender, EventArgs e)
         {
             fillClass();
+            fillFirms();
             fillFinancialYear();            
         }
 
@@ -46,6 +47,25 @@ namespace E_Billing
             cmbClass.ValueMember = "ID";
             cmbClass.DisplayMember = "ClassName";
             cmbClass.DataSource = dt;
+
+            con.Close();
+        }
+        private void fillFirms()
+        {
+            DataRow dr;
+            if (con.State == ConnectionState.Closed) con.Open();
+            OleDbCommand cmd = new OleDbCommand("select * from tblFirm", con);
+            OleDbDataAdapter sda = new OleDbDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+
+            dr = dt.NewRow();
+            dr.ItemArray = new object[] { 0, "--Select Firm--" };
+            dt.Rows.InsertAt(dr, 0);
+
+            cmbFirm.ValueMember = "ID";
+            cmbFirm.DisplayMember = "FirmName";
+            cmbFirm.DataSource = dt;
 
             con.Close();
         }
@@ -186,21 +206,26 @@ namespace E_Billing
             decimal fixedvalue = 16M;
             decimal fixedvalue1 = 1.5M;
             decimal fixedvalue2 = 3.2M;
-            decimal fixedvalue3 = 4.2M;
-            decimal figure1 = ((decimal.Parse(totalnoofcopies.ToString()) * decimal.Parse(totalpages.ToString())) / fixedvalue);                        
-            decimal figure2= (fixedvalue1 * Math.Round(figure1));
+            decimal fixedvalue3 = 4.2M;            
+
+            decimal figure1 = ((decimal.Parse(totalnoofcopies.ToString()) * decimal.Parse(totalpages.ToString())) / fixedvalue);
+
+            decimal figure2 = (fixedvalue1 * Math.Ceiling(figure1));
             decimal figure3= (figure2/100);
-            decimal figure4 = figure1 + figure3;
+            decimal figure4 = figure1 + Math.Ceiling(figure3);
             amount = figure4 * ((typeofclass == "UG") ? fixedvalue2 : fixedvalue3);
-            return Math.Round(amount,2);
+
+            return amount;
         }
 
         private decimal getAmountForBindingAndStiching(decimal rate, decimal amount)
         {
+            decimal fixvalue = 8.0M;
             int totalpages = int.Parse(txttotalpages.Text);
             int totalnoofcopies = int.Parse(txtNoofcopies.Text);
             int noofcopiesper100 = getNumberofcopiesper100(totalnoofcopies);
-            amount = rate * noofcopiesper100 * totalpages / 8;
+            decimal figure1 = Math.Ceiling(totalpages / fixvalue);
+            amount = rate * noofcopiesper100 * figure1;
             return amount;
         }
 
@@ -289,6 +314,20 @@ namespace E_Billing
                 txtClassType.Text = "";
             }
         }
+
+        private void chkotherdeduction_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkotherdeduction.Checked == true)
+            {
+                pnlOtherDeduction.Visible = true;    
+            }
+            else
+            {
+                pnlOtherDeduction.Visible = false;
+            }
+        }
+
+       
         
     }
 }

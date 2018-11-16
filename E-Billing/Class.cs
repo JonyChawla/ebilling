@@ -209,7 +209,7 @@ namespace E_Billing
                 }
                 else
                 {
-                    MessageBox.Show("No item found with given Particular name and financial year..!!", "Delete failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("No item found with given class name..!!", "Delete failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 trans.Commit();
                 updateGridView();

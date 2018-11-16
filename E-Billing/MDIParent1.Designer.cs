@@ -41,6 +41,7 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.firmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -63,7 +64,8 @@
             this.masterToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.articleToolStripMenuItem,
             this.gSTToolStripMenuItem,
-            this.classToolStripMenuItem});
+            this.classToolStripMenuItem,
+            this.firmToolStripMenuItem});
             this.masterToolStripMenuItem.Name = "masterToolStripMenuItem";
             this.masterToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.masterToolStripMenuItem.Text = "&Master";
@@ -133,6 +135,13 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
+            // firmToolStripMenuItem
+            // 
+            this.firmToolStripMenuItem.Name = "firmToolStripMenuItem";
+            this.firmToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.firmToolStripMenuItem.Text = "Firm";
+            this.firmToolStripMenuItem.Click += new System.EventHandler(this.firmToolStripMenuItem_Click);
+            // 
             // MDIParent1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -170,6 +179,7 @@
         private System.Windows.Forms.ToolStripMenuItem gSTToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem billCalculationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem classToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem firmToolStripMenuItem;
     }
 }
 
